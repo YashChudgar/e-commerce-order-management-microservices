@@ -336,24 +336,28 @@ Once all services are running, access the application through:
 
 ## Testing
 
-The APIs have been manually tested using Postman.
+The APIs have been manually tested using Postman, while automated testing has been implemented using JUnit 5 and Mockito to verify the business logic of the individual microservices.
 
 The application has been checked for:
 
-- Customer management operations.
-- Product management and stock operations.
-- Order creation and retrieval.
-- Order cancellation and stock release.
-- User registration and authentication.
+- Customer management operations, including creation, retrieval, updating, deletion and searching.
+- Product management, including product validation, retrieval, updating, deletion and stock validation.
+- Order creation, retrieval and cancellation.
+- Product stock reservation and release during order processing.
+- User registration, duplicate email validation, password encryption and authentication.
 - JWT-protected API access through the API Gateway.
-- Centralised Swagger documentation.
+- Automated unit testing of Customer, Product, Authentication and Order Services.
+- Error handling and validation for invalid requests and business rules.
+- Centralised Swagger API documentation.
 
-Automated unit and integration testing is planned as a subsequent development activity.
+The automated tests use Mockito to isolate service dependencies and verify expected behaviour under both successful and failure scenarios. Maven is used to execute the test suites and report their results.
 
 ## Future Improvements
 
-- Automated unit and integration testing.
+Although the core microservices functionality and automated testing have been implemented, several improvements could further enhance the application:
+
 - Docker containerisation.
+- CI / CD
 - Service discovery.
 - Distributed tracing and centralised monitoring.
 - Message-driven communication between services.
