@@ -24,10 +24,8 @@ public class SecurityConfig {
 
             .authorizeHttpRequests(auth -> auth
 
-                // Public authentication endpoints
                 .requestMatchers("/api/auth/**").permitAll()
 
-                // Public Swagger documentation
                 .requestMatchers(
                     "/swagger-ui/**",
                     "/swagger-ui.html",
@@ -38,11 +36,9 @@ public class SecurityConfig {
                     "/auth/v3/api-docs"
                 ).permitAll()
 
-                // All other requests require authentication
                 .anyRequest().authenticated()
             )
 
-            // Validate JWT tokens
             .oauth2ResourceServer(oauth2 -> oauth2
                 .jwt(Customizer.withDefaults())
             );
